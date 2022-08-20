@@ -1,7 +1,7 @@
 name: Man10HandyShulker
 version: '${project.version}'
 main: red.man10.man10handyshulker.Man10HandyShulker
-api-version: 1.19
+api-version: 1.17
 author: ChiharuHagihara
 commands:
   man10handyshulker:
