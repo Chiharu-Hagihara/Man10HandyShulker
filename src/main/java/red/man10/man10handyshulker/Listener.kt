@@ -43,8 +43,6 @@ class Listener : Listener {
 
         if (e.view.title() != Component.text(prefix)) return
 
-        p.sendMessage("Same title.")
-
         val inv = e.inventory
 
         val itemInMainhand = p.inventory.itemInMainHand
@@ -54,7 +52,5 @@ class Listener : Listener {
         shulker.inventory.contents = inv.contents
         meta.blockState = shulker
         itemInMainhand.itemMeta = meta
-
-        p.sendMessage("All done. Nice.( ﾟ◡ﾟ)")
     }
 }
