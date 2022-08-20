@@ -15,6 +15,6 @@ class Man10HandyShulker : JavaPlugin() {
     companion object {
         lateinit var plugin: Man10HandyShulker
 
-        const val prefix = "§e[&dM&fa&an&f10§5HandyShulker§e]§r"
+        const val prefix = "§e[§dM§fa§an§f10§5HandyShulker§e]§r"
     }
 }
