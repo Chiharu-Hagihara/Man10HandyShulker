@@ -21,6 +21,10 @@ class Listener : Listener {
 
         val p = e.player
 
+        if (!p.hasPermission("man10handyshulker.use")) {
+            p.sendMessage("${prefix}§4You don't have permission.")
+        }
+
         val itemInMainhand = p.inventory.itemInMainHand
 
         if (itemInMainhand.type != Material.SHULKER_BOX) return
