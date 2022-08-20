@@ -9,8 +9,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.inventory.InventoryHolder
-import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.BlockStateMeta
 import red.man10.man10handyshulker.Man10HandyShulker.Companion.prefix
 
@@ -24,14 +22,13 @@ class Listener : Listener {
         val p = e.player
 
         val itemInMainhand = p.inventory.itemInMainHand
-        val itemInOffhand = p.inventory.itemInOffHand
 
         if (itemInMainhand.type != Material.SHULKER_BOX) return
 
         if (itemInMainhand.itemMeta is BlockStateMeta) {
-            val im = itemInMainhand.itemMeta as BlockStateMeta
-            if (im.blockState is ShulkerBox) {
-                val shulker = im.blockState as ShulkerBox
+            val meta = itemInMainhand.itemMeta as BlockStateMeta
+            if (meta.blockState is ShulkerBox) {
+                val shulker = meta.blockState as ShulkerBox
                 val inv = Bukkit.createInventory(null, 27, Component.text(prefix))
                 inv.contents = shulker.inventory.contents
                 p.openInventory(inv)
