@@ -4,9 +4,11 @@ import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.block.ShulkerBox
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.meta.BlockStateMeta
@@ -39,6 +41,21 @@ class Listener : Listener {
             }
         }
 
+    }
+
+    @EventHandler
+    fun onClickInventory(e: InventoryClickEvent) {
+
+        if (e.view.title() != Component.text(prefix)) return
+
+        val p = e.whoClicked as Player
+
+        val eventItem = e.clickedInventory?.getItem(e.slot) ?: return
+
+        if (eventItem.type == Material.SHULKER_BOX) {
+            e.isCancelled = true
+            p.sendMessage("${prefix}シュルカーボックスは入れることができません。")
+        }
     }
 
     @EventHandler
